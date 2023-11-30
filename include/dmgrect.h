@@ -1,12 +1,9 @@
-#ifndef INCLUDEGUARD_DMGRECT_DMGRECTH
-#define INCLUDEGUARD_DMGRECT_DMGRECTH
-
-#include <stdbool.h>
-#include <stdint.h>
+#ifndef INCLUDEGUARD_DMGRECT
+#define INCLUDEGUARD_DMGRECT
 
 typedef struct {
-int32_t offset[2];
-uint32_t size[2];
+	int32_t offset[2];
+	uint32_t size[2];
 } Dmgrect;
 
 void dmgrect_intersection(Dmgrect *dmg, Dmgrect *other);
