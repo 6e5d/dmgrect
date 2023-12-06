@@ -48,15 +48,6 @@ void dmgrect_from_2point(Dmgrect *dmg,
 	dmg->size[1] = (uint32_t)(y2 - y1);
 }
 
-void dmgrect_includef(Dmgrect *dmg, float x, float y) {
-	int32_t x1 = (int32_t)floorf(x);
-	int32_t x2 = (int32_t)ceilf(x);
-	int32_t y1 = (int32_t)floorf(y);
-	int32_t y2 = (int32_t)ceilf(y);
-	dmgrect_include(dmg, x1, y1);
-	dmgrect_include(dmg, x2, y2);
-}
-
 bool dmgrect_is_empty(Dmgrect *dmg) {
 	return dmg->size[0] == 0 || dmg->size[1] == 0;
 }
