@@ -10,6 +10,12 @@ static inline int32_t min(int32_t x, int32_t y) {
 	if (x <= y) { return x; } else { return y; }
 }
 
+void dmgrect_debug(Dmgrect *dmg) {
+	fprintf(stderr, "%d,%d %ux%u\n",
+		dmg->offset[0], dmg->offset[1],
+		dmg->size[0], dmg->size[1]);
+}
+
 void dmgrect_intersection(Dmgrect *dmg, Dmgrect *other) {
 	int32_t x1 = max(dmg->offset[0], other->offset[0]);
 	int32_t y1 = max(dmg->offset[1], other->offset[1]);
@@ -27,6 +33,7 @@ void dmgrect_intersection(Dmgrect *dmg, Dmgrect *other) {
 }
 
 void dmgrect_union(Dmgrect *dmg, Dmgrect *other) {
+	if (dmgrect_is_empty(other)) { return; }
 	dmgrect_include(dmg, other->offset[0], other->offset[1]);
 	int32_t rd[2];
 	dmgrect_rd(other, rd);
@@ -72,5 +79,4 @@ void dmgrect_include(Dmgrect *dmg, int32_t x, int32_t y) {
 
 void dmgrect_init(Dmgrect *dmg) {
 	dmg->size[0] = 0;
-	dmg->size[1] = 0;
 }
